@@ -1,0 +1,17 @@
+import subprocess
+
+log = open('geth.log', 'a')
+
+proc = subprocess.Popen([
+    'geth',
+    '--networkid', '16',
+    '--port', '30303',
+    '--maxpeers', '0',
+    '--nodiscover',
+    '--etherbase', '0xb8ce60975590f7aebca746fc6086777bf6ca5acc',
+    '--mine',
+], stderr=log)
+
+print('process id = %d' % proc.pid)
+
+# end of run.py

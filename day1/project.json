@@ -1,0 +1,44 @@
+{
+  "version": "7",
+  "chains": {
+    "bch": {
+      "web3": {
+        "provider": {
+          "class": "web3.providers.ipc.IPCProvider"
+        }
+      },
+      "contracts": {
+        "backends": {
+          "Memory": {
+            "class": "populus.contracts.backends.memory.MemoryBackend",
+            "priority": 50
+          },
+          "TestContracts": {
+            "class": "populus.contracts.backends.testing.TestContractsBackend",
+            "priority": 40
+          },
+          "JSONFile": {
+            "class": "populus.contracts.backends.filesystem.JSONFileBackend",
+            "settings": {
+              "file_path": "./registrar.json"
+            },
+            "priority": 10
+          },
+          "ProjectContracts": {
+            "class": "populus.contracts.backends.project.ProjectContractsBackend",
+            "priority": 20
+          }
+        }
+      },
+      "chain": {
+        "class": "populus.chain.ExternalChain"
+      }
+    }
+  },
+  "compilation": {
+    "import_remappings": [],
+    "contracts_source_dirs": [
+      "./contracts"
+    ]
+  }
+}
